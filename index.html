@@ -1604,7 +1604,33 @@ main{padding-bottom:calc(var(--sab) + 130px)}
   .fab{bottom:calc(var(--sab) + 60px)}
   main{padding-bottom:calc(var(--sab) + 88px)}
 }
+
+/* ============ SCALE UNIVERSEL (SE → Pro Max → iPad) ============ */
+:root{--sab:env(safe-area-inset-bottom,0px);--sat:env(safe-area-inset-top,0px)}
+:root.framed{--sab:min(env(safe-area-inset-bottom,0px),8px);--sat:min(env(safe-area-inset-top,0px),16px)}
+html,body{height:var(--app-h,100%)}
+#shell{height:var(--app-h,100%);min-height:0}
+.top{padding-top:max(10px,calc(var(--sat) + 8px))}
+.top h1{font-size:clamp(25px,7.4vw,34px)}
+.hero{border-radius:clamp(22px,7vw,28px)}
+.tabs{padding-bottom:calc(var(--sab) + 6px)}
+@media (max-width:389px){
+  .top,main{padding-left:16px;padding-right:16px}
+  .tab .pill{width:46px}
+  .fab{right:16px;width:52px;height:52px}
+}
+@media (min-width:430px) and (max-width:699px){
+  .top h1{font-size:32px}
+  .hero-stats b{font-size:18px}
+}
 </style>
+<script>
+(function(){var d=document.documentElement;
+try{if(self!==top)d.classList.add('framed')}catch(e){d.classList.add('framed')}
+function h(){d.style.setProperty('--app-h',window.innerHeight+'px')}
+h();addEventListener('resize',h);addEventListener('orientationchange',function(){setTimeout(h,150)});
+})();
+</script>
 </head>
 <body>
 <div id="shell">
