@@ -1591,6 +1591,19 @@ main{padding-left:max(20px,calc(var(--sal) + 16px));padding-right:max(20px,calc(
   .sheet{max-height:100dvh;max-width:560px}
   .lock-in{transform:scale(.8);transform-origin:center}
 }
+
+/* ============ FIX bas d'écran (double marge) ============ */
+:root{--sab:min(env(safe-area-inset-bottom,0px),8px)}
+.tabs{padding-top:6px;padding-bottom:calc(var(--sab) + 6px)}
+.tab{gap:3px}
+.fab{bottom:calc(var(--sab) + 82px)}
+main{padding-bottom:calc(var(--sab) + 130px)}
+.sheet{padding-bottom:var(--sab)}
+@media (orientation:landscape) and (max-height:500px){
+  .tabs{padding-bottom:calc(var(--sab) + 4px)}
+  .fab{bottom:calc(var(--sab) + 60px)}
+  main{padding-bottom:calc(var(--sab) + 88px)}
+}
 </style>
 </head>
 <body>
